@@ -1,0 +1,8 @@
+\section{Conclusão}
+
+O método de Monte Carlo foi implementado em Python nas versões serial e MPI,
+em um único arquivo. Com $10^7$ pontos e quatro processos, o tempo caiu de
+1,7965~s para 0,4533~s, resultando em speedup de 3,96 e eficiência próxima de
+99\%. O resultado confirma que o cálculo é apropriado para paralelismo por
+processos, devido à independência entre as amostras e à pequena necessidade de
+comunicação.

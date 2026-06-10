@@ -1,0 +1,12 @@
+\section{Introdução}
+
+O objetivo desta prática é calcular $\pi$ pelo método de Monte Carlo e
+paralelizar o cálculo com a biblioteca MPI para Python. O enunciado solicita:
+deduzir o método; executar um número grande de pontos em quatro processos;
+comparar com a versão serial; apresentar o speedup; documentar equações,
+código e execução; e discutir a arquitetura paralela adequada.
+
+A solução utiliza um único arquivo Python. Primeiro, o processo de
+identificador zero executa a versão serial. Em seguida, os pontos são
+divididos entre os processos MPI e os resultados locais são somados por uma
+operação coletiva.

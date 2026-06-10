@@ -1,0 +1,22 @@
+\section{Discussão}
+
+O problema é altamente paralelizável: cada ponto pode ser gerado e testado
+sem depender dos demais. A comunicação ocorre apenas no final, quando os
+acertos locais são somados. Essa baixa comunicação explica o speedup próximo
+do ideal observado no teste.
+
+Do ponto de vista de Flynn, a solução é MIMD, pois vários processos executam
+instruções independentes sobre dados diferentes. O estilo de programação é
+SPMD: todos executam o mesmo programa, mas cada \textit{rank} trabalha sobre
+uma parcela dos pontos.
+
+MPI adota o modelo de memória distribuída entre processos. Na máquina
+multicore usada, a memória física é compartilhada, porém cada processo possui
+seu próprio espaço de endereçamento. Essa abordagem também permite executar o
+mesmo código em várias máquinas. Para este problema, MPI é adequado porque o
+trabalho pode ser dividido com pouca troca de mensagens.
+
+O speedup pode diminuir para poucos pontos, pois inicialização, sincronização
+e redução passam a representar uma fração maior do tempo total. Também não se
+espera que o ganho cresça indefinidamente devido à parte serial e aos recursos
+limitados da máquina.

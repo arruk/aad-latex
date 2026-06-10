@@ -1,0 +1,72 @@
+\documentclass[onecolumn]{NobArticle}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{tikz}
+
+\runninghead{Prática 3: Cálculo de $\pi$ com MPI}
+\footertext{Arquiteturas de Alto Desempenho}
+
+\lstdefinestyle{python}{
+    language=Python,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{NavyBlue},
+    commentstyle=\color{ForestGreen},
+    stringstyle=\color{BrickRed},
+    numbers=left,
+    numberstyle=\tiny,
+    frame=single,
+    breaklines=true,
+    showstringspaces=false,
+    columns=fullflexible
+}
+
+\lstdefinestyle{terminal}{
+    basicstyle=\ttfamily\small,
+    frame=single,
+    breaklines=true,
+    showstringspaces=false
+}
+
+\title{Prática 3: Cálculo de $\pi$ por Monte Carlo com MPI}
+
+\author{
+    Lucas Arruk Mendes\textsuperscript{1}
+}
+
+\date{
+    \textsuperscript{\textbf{1}}
+    RA: 819446, Departamento de Computação, Universidade Federal de São Carlos
+}
+
+\renewcommand{\maketitlehookd}{
+\begin{abstract}
+\noindent Este tutorial apresenta a estimativa de $\pi$ pelo método de Monte
+Carlo em Python, nas versões serial e paralela com quatro processos MPI.
+São descritos o método, a implementação, a execução e a comparação de
+desempenho. Para $10^7$ pontos, foi obtido speedup de 3,96.
+\medskip
+
+\small{\textbf{Palavras-chave:} Monte Carlo; MPI; Python; paralelismo; speedup.}
+\end{abstract}
+}
+
+\begin{document}
+
+\small
+\maketitle
+
+\input{Sections/01-Introduction}
+\input{Sections/02-Background}
+\input{Sections/03-Methods}
+\input{Sections/04-Results}
+\input{Sections/05-Discussion}
+\input{Sections/06-Conclusion}
+
+\printbibliography
+
+\end{document}

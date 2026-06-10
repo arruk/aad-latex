@@ -1,0 +1,45 @@
+\section{Tutorial de implementação}
+
+\subsection{Instalação}
+
+Em Debian ou Ubuntu, Open MPI e a interface Python podem ser instalados com:
+
+\begin{lstlisting}[style=terminal]
+sudo apt update
+sudo apt install openmpi-bin python3-mpi4py
+\end{lstlisting}
+
+O programa usa \texttt{MPI.COMM\_WORLD}, que reúne todos os processos
+iniciados pelo \texttt{mpiexec}. Cada processo consulta seu identificador
+(\textit{rank}) e o número total de processos. A documentação oficial do
+\texttt{mpi4py} apresenta esse modelo de execução e as operações coletivas
+\cite{mpi4py}.
+
+\subsection{Código}
+
+A função \texttt{calcular\_pi} sorteia os pontos e retorna apenas a quantidade
+que pertence ao círculo. Na parte paralela, cada processo recebe
+aproximadamente $N/p$ pontos. A operação \texttt{reduce}, com
+\texttt{MPI.SUM}, soma os acertos e entrega o total ao processo zero.
+
+\lstinputlisting[
+    style=python,
+    caption={Implementação serial e MPI em um único arquivo.},
+    label={lst:codigo}
+]{pi.py}
+
+\subsection{Execução}
+
+O programa é executado com quatro processos, como solicitado:
+
+\begin{lstlisting}[style=terminal]
+mpiexec -n 4 python3 pi.py
+\end{lstlisting}
+
+O \texttt{mpiexec} é o comando padrão para iniciar os processos MPI
+\cite{openmpi}. Caso o Open MPI emita avisos sobre interfaces TCP em uma
+execução inteiramente local, pode-se selecionar apenas os transportes locais:
+
+\begin{lstlisting}[style=terminal]
+mpiexec --mca btl self,sm -n 4 python3 pi.py
+\end{lstlisting}

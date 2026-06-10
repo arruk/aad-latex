@@ -1,0 +1,35 @@
+\section{Resultados}
+
+O experimento utilizou $N=10\,000\,000$ pontos e quatro processos na mesma
+máquina multicore. A Tabela~\ref{tab:resultados} resume a execução.
+
+\begin{table}[H]
+    \centering
+    \caption{Resultados das implementações serial e MPI.}
+    \label{tab:resultados}
+    \begin{tabular}{lrr}
+        \toprule
+        Implementação & $\pi$ estimado & Tempo (s) \\
+        \midrule
+        Serial & 3,1413028 & 1,7965 \\
+        MPI, 4 processos & 3,1414560 & 0,4533 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+O speedup é calculado por
+
+\begin{equation}
+    S_p=\frac{T_s}{T_p}
+       =\frac{1{,}7965}{0{,}4533}
+       \approx 3{,}96.
+\end{equation}
+
+Para quatro processos, a eficiência foi
+
+\begin{equation}
+    E_p=\frac{S_p}{p}=\frac{3{,}96}{4}\approx 0{,}99,
+\end{equation}
+
+ou aproximadamente 99\%. Os valores estimados diferem porque as versões usam
+sequências pseudoaleatórias distintas, mas ambas se aproximam de $\pi$.
