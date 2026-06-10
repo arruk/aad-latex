@@ -1,0 +1,2 @@
+to build: latexmk -pdf -pvc main.tex
+to clean: latexmk -c

@@ -1,0 +1,62 @@
+% Author Name: José Areia 
+% Author Contact: jose.apareia@gmail.com
+% Version: 1.0.3 - 18/04/2025
+% Public Repository: https://github.com/joseareia/nob-article
+
+% Packages & Document Configurations
+
+\documentclass[twocolumn]{NobArticle}
+%\runninghead{Shortened Running Article Title}
+%\footertext{\textit{Journal X} (2023) 12:684}
+\usepackage{pgfplotstable}
+\usepackage{booktabs}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage{float}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{caption}
+\usepackage{amssymb}
+\usepackage{comment}
+\usepackage{booktabs}
+\usepackage{longtable}
+
+\title{}
+
+\author{
+    Lucas Arruk Mendes\textsuperscript{1}
+}
+
+\date{
+    \textsuperscript{\textbf{1}}
+    RA:819446, Departamento de Computação, Universidade Federal de São Carlos\\
+}
+
+\renewcommand{\maketitlehookd}{
+\begin{abstract}
+\noindent 
+\medskip
+
+\small{\textbf{Palavras Chave:} }
+\end{abstract}
+}
+
+\begin{document}
+
+\small
+\maketitle
+
+\input{Sections/01-Introduction}
+\input{Sections/02-Background}
+\input{Sections/03-Methods}
+\input{Sections/04-Results}
+\input{Sections/05-Discussion}
+\input{Sections/06-Conclusion}
+
+\section*{Agradecimentos}
+Esta pesquisa recebeu apoio durante o curso de Arquiteturas de Alto Desempenho, ministrado pelo Professor Emerson Carlos Pedrino, do Departamento de Computação da UFSCar.
+
+\printbibliography
+
+\clearpage
+
+\end{document}

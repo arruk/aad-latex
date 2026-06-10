@@ -1,0 +1,48 @@
+\section{Desenvolvimento}
+
+\subsection{Topico 1: primeiro aspecto do tema}
+
+\topicclaim{Explique aqui a ideia central deste primeiro topico.}
+
+Desenvolva o primeiro aspecto que esta sob o mesmo guarda-chuva tematico da
+tese. Apresente evidencias, exemplos, conceitos ou autores que ajudem o leitor
+a entender por que este ponto e relevante para o argumento principal.
+
+Ao final do paragrafo ou da subsecao, conecte explicitamente este topico a tese
+do essay. Isso evita que o desenvolvimento vire apenas uma lista de assuntos.
+
+Quando o essay precisar apresentar um procedimento, use um algoritmo numerado e
+referenciavel, como no Algoritmo~\ref{alg:busca-completa}. O exemplo tambem
+mostra uma forma compacta de registrar variaveis, condicoes, retorno,
+pos-condicao e complexidade.
+
+\begin{algorithm}[H]
+\caption{Busca linear com sentinela de controle}
+\label{alg:busca-completa}
+\Entrada{Vetor $A[1 \ldots n]$, tamanho $n \in \mathbb{N}$ e chave $x$}
+\Saida{Indice $p$ tal que $A[p] = x$, ou $-1$ caso $x \notin A$}
+
+$p \gets -1$\tcp*{valor padrao quando a chave nao e encontrada}
+$i \gets 1$\tcp*{variavel de iteracao}
+$comparacoes \gets 0$\tcp*{contador auxiliar}
+
+\While{$i \leq n$ \textbf{e} $p = -1$}{
+  $comparacoes \gets comparacoes + 1$\;
+
+  \eIf{$A[i] = x$}{
+    $p \gets i$\tcp*{guarda a primeira ocorrencia}
+  }{
+    $i \gets i + 1$\;
+  }
+}
+
+\tcp{Pos-condicao: $p = -1$ ou $A[p] = x$}
+\tcp{Complexidade: $T(n) \in O(n)$ no pior caso e $T(n) \in \Omega(1)$ no melhor caso}
+\tcp{Espaco adicional: $S(n) \in O(1)$}
+\Retorne $p$\;
+\end{algorithm}
+
+No texto, as variaveis matematicas aparecem em modo matematico, como $A$, $n$,
+$x$, $i$ e $p$. A atribuicao e escrita com $\gets$; intervalos podem ser
+representados por $1 \ldots n$; pertencimento e ausencia por $\in$ e $\notin$;
+e a analise assintotica usa $O(n)$, $\Omega(1)$ ou $\Theta(n)$, conforme o caso.
