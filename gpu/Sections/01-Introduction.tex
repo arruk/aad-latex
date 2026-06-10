@@ -1,0 +1,10 @@
+\section{Introdução}
+
+O objetivo da prática foi comparar processamento em CPU e GPU em dois
+problemas: a transformada rápida de Fourier (FFT) e o conjunto de Mandelbrot.
+Foi autorizado o uso de Python em substituição ao MATLAB. Assim, NumPy foi
+usado na CPU, CuPy representou operações vetorizadas sobre dados residentes
+na GPU e Numba CUDA foi usado para implementar um kernel explícito.
+
+Os experimentos foram executados em uma NVIDIA GeForce RTX 2060 com 6 GB de
+memória. Cada tempo apresentado corresponde à mediana de cinco execuções.

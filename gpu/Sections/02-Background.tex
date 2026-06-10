@@ -1,0 +1,21 @@
+\section{Fundamentos}
+
+O speedup foi calculado por
+\begin{equation}
+    S = \frac{T_{\mathrm{CPU}}}{T_{\mathrm{GPU}}},
+\end{equation}
+considerando separadamente o tempo de computação e o tempo que inclui a
+transferência de dados.
+
+Na FFT, um \texttt{numpy.ndarray} permanece na memória principal, enquanto um
+\texttt{cupy.ndarray} permanece na memória da GPU. A conversão com
+\texttt{cp.asarray} transfere dados para o dispositivo e \texttt{cp.asnumpy}
+realiza a transferência inversa \autocite{cupy}.
+
+Para o Mandelbrot foi utilizada a relação
+\begin{equation}
+    Z_{n+1} = Z_n^2 + c, \qquad Z_0 = c.
+\end{equation}
+Um ponto continua sendo iterado enquanto $|Z_n|\leq 2$. O número de iterações
+antes do escape define o valor do pixel correspondente no plano da imagem
+\autocite{mandelbrot}.

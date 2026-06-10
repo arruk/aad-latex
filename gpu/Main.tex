@@ -1,0 +1,52 @@
+\documentclass[twocolumn]{NobArticle}
+
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage[font=small,labelfont=bf]{caption}
+
+\graphicspath{{Figures/}}
+
+\title{Prática 4: Processamento em GPU com Python}
+
+\author{
+    Lucas Arruk Mendes\textsuperscript{1}
+}
+
+\date{
+    \textsuperscript{\textbf{1}}
+    RA: 819446, Departamento de Computação, Universidade Federal de São Carlos\\
+}
+
+\renewcommand{\maketitlehookd}{
+\begin{abstract}
+\noindent
+Esta prática avaliou o uso de GPU em uma FFT e no cálculo do conjunto de
+Mandelbrot. As versões originalmente propostas em MATLAB foram implementadas
+em Python com NumPy, CuPy e Numba CUDA. Foram medidos os tempos de execução,
+os custos de transferência e os respectivos speedups. A FFT atingiu speedup
+de 69,875 sem transferência e 15,259 incluindo a transferência para a GPU. No
+Mandelbrot, o kernel CUDA atingiu speedup total de 45,079 e produziu resultado
+idêntico às demais implementações.
+\medskip
+
+\small{\textbf{Palavras-chave:} GPU; CUDA; FFT; Mandelbrot; Python.}
+\end{abstract}
+}
+
+\begin{document}
+
+\small
+\maketitle
+
+\input{Sections/01-Introduction}
+\input{Sections/02-Background}
+\input{Sections/03-Methods}
+\input{Sections/04-Results}
+\input{Sections/05-Discussion}
+\input{Sections/06-Conclusion}
+
+\printbibliography[title={Referências}]
+
+\end{document}

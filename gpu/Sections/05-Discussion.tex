@@ -1,0 +1,16 @@
+\section{Discussão}
+
+No Exercício 1, o speedup inicial foi 69,875. Ao incluir a transferência
+host--device, ele caiu para 15,259, pois o custo de movimentação pela interface
+PCIe passou a fazer parte do tempo total. A solução pesquisada foi manter os
+dados como \texttt{cupy.ndarray} e executar várias operações antes de
+retorná-los à CPU. Com a transferência amortizada, o speedup foi 46,582.
+
+No Exercício 2b, a versão vetorizada foi ligeiramente mais lenta que a CPU.
+Embora execute na GPU, ela cria matrizes temporárias em cada uma das 500
+iterações e realiza várias operações globais. Já o Exercício 2c concentra todo
+o laço em um kernel e atribui um pixel a cada thread, reduzindo lançamentos e
+tráfego de memória. Por isso, alcançou speedup total de 45,079.
+
+A igualdade exata entre as matrizes confirmou que a paralelização preservou o
+resultado da implementação serial.

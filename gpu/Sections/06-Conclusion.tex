@@ -1,0 +1,8 @@
+\section{Conclusão}
+
+Todos os itens da prática foram implementados em Python. A FFT demonstrou que
+o custo de transferência reduz significativamente o speedup e que manter os
+dados na GPU recupera parte desse ganho. No Mandelbrot, a forma de
+paralelização foi determinante: a implementação vetorizada não superou a CPU,
+enquanto o kernel CUDA foi 45,079 vezes mais rápido e manteve resultado
+idêntico ao caso serial.

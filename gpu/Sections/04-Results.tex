@@ -1,0 +1,69 @@
+\section{Resultados}
+
+\subsection{FFT}
+
+A Tabela~\ref{tab:fft} apresenta os tempos e speedups. A inclusão da
+transferência reduziu o ganho, mas a GPU permaneceu mais rápida que a CPU.
+
+\begin{table}[H]
+\centering
+\caption{Resultados da FFT para matriz $3000\times3000$.}
+\label{tab:fft}
+\begin{tabular}{lrr}
+\toprule
+Caso & Tempo (ms) & Speedup \\
+\midrule
+CPU & 137,556 & 1,000 \\
+GPU & 1,969 & 69,875 \\
+GPU + transferência & 9,015 & 15,259 \\
+GPU residente & 2,953 & 46,582 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\columnwidth]{fft_tempos.png}
+    \caption{Tempos medidos para a FFT.}
+    \label{fig:fft}
+\end{figure}
+
+As saídas foram numericamente equivalentes, com diferença absoluta máxima de
+$1{,}85\times10^{-4}$.
+
+\subsection{Mandelbrot}
+
+A Tabela~\ref{tab:mandelbrot} mostra os resultados para grid $1000\times1000$
+e 500 iterações.
+
+\begin{table}[H]
+\centering
+\caption{Resultados do conjunto de Mandelbrot.}
+\label{tab:mandelbrot}
+\begin{tabular}{lrr}
+\toprule
+Implementação & Tempo (ms) & Speedup \\
+\midrule
+CPU serial & 210,842 & 1,000 \\
+GPU vetorizada & 230,551 & 0,915 \\
+Kernel CUDA & 4,677 & 45,079 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\columnwidth]{mandelbrot_tempos.png}
+    \caption{Comparação dos tempos do Mandelbrot.}
+    \label{fig:mandelbrot-tempos}
+\end{figure}
+
+As matrizes produzidas pelas três implementações foram exatamente iguais:
+nenhum pixel apresentou diferença.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.92\columnwidth]{mandelbrot_gpu_kernel.png}
+    \caption{Conjunto de Mandelbrot obtido pelo kernel CUDA.}
+    \label{fig:mandelbrot}
+\end{figure}

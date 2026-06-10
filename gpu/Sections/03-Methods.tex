@@ -1,0 +1,46 @@
+\section{Métodos}
+
+\subsection{Exercício 1: FFT}
+
+Foi criada uma matriz aleatória \texttt{float32} de dimensão
+$3000\times3000$. A FFT foi aplicada sobre a primeira dimensão, reproduzindo o
+comportamento do exemplo do enunciado. Foram medidos:
+
+\begin{enumerate}
+    \item FFT em CPU com NumPy;
+    \item somente a FFT em GPU;
+    \item transferência host--device seguida da FFT;
+    \item custo médio por FFT ao reutilizar dados residentes na GPU.
+\end{enumerate}
+
+Eventos CUDA e sincronização explícita foram usados para impedir que a
+execução assíncrona produzisse tempos incorretos. Os resultados CPU e GPU
+foram comparados com tolerância numérica.
+
+\subsection{Exercício 2a: CPU}
+
+O plano complexo $[-2,1]\times[-1{,}5,1{,}5]$ foi mapeado para uma matriz
+$1000\times1000$. Para cada pixel, o algoritmo:
+
+\begin{enumerate}
+    \item calcula o número complexo $c$ correspondente;
+    \item inicializa $Z_0=c$;
+    \item aplica a recorrência até 500 vezes;
+    \item interrompe quando $|Z|>2$;
+    \item grava na matriz a última iteração válida.
+\end{enumerate}
+
+A versão serial foi compilada com \texttt{numba.njit}.
+
+\subsection{Exercício 2b: GPU vetorizada}
+
+A alternativa ao \texttt{gpuArray} do MATLAB foi implementada com matrizes
+CuPy. A cada iteração, operações vetorizadas atualizam todos os pontos ativos
+da matriz simultaneamente.
+
+\subsection{Exercício 2c: kernel CUDA}
+
+A alternativa ao \texttt{arrayfun} foi um kernel Numba CUDA com um thread por
+pixel \autocite{numba}. Foram usados blocos de $16\times16$ threads. Todas as
+versões utilizaram precisão \texttt{float32}, garantindo uma comparação
+direta das matrizes resultantes.
